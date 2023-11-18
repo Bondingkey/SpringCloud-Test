@@ -39,7 +39,7 @@ public class PaymentController {
         }
     }
 
-    @GetMapping(value = "/payment/get/{id}")
+    @RequestMapping(value = "/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id){
         Payment payment = paymentService.getPaymentById(id);
         log.info("*****查询结果："+payment);
@@ -49,6 +49,12 @@ public class PaymentController {
             return new CommonResult(444,"没有对应记录，查询ID："+id,null);
         }
     }
+
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin(){
+        return "hi ,i'am paymentzipkin server，welcome to atguigu，O(∩_∩)O哈哈~";
+    }
+
 
 
     //测试超时
